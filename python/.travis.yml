@@ -1,0 +1,16 @@
+sudo: false
+#add language, etc. here
+language:
+    python
+
+install:
+    - pip install tox coveralls
+
+script:
+    - tox
+
+after_success:
+    coveralls
+
+notifications:
+    email: crgrant@gmail.com

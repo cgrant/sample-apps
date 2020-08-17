@@ -1,0 +1,29 @@
+<app-appnav></app-appnav>
+
+<ul>
+  <li *ngFor="let contact of contacts | async; let i = index" [attr.data-index]="i">
+    {{i + 1}} : {{contact.id}} :  {{contact.firstname}} 
+      <button class="btn btn-success" (click)="editContact(contact)">edit</button>
+      <button (click)="deleteContact(contact)">Del</button>
+  </li>
+</ul>
+
+
+
+<form #f="ngForm">
+  <div class="form-group">
+  <input [(ngModel)]="myContact" name="firstname" type="text" class="form-control" 
+          placeholder="Enter Contact" required>
+  </div>
+  <p *ngIf="loading">
+     <i class="fa fa-spinner fa-spin"></i>
+  </p>
+  <div class="form-group">
+   <button class="btn btn-primary" [disabled]="!f.valid" (click)="saveContact()">
+     Save Task
+   </button>
+  </div>
+</form>
+
+
+<router-outlet></router-outlet>

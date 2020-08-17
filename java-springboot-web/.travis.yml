@@ -1,0 +1,6 @@
+anguage: java
+script: mvn clean package
+notifications:
+  email: crgrant@gmail.com
+jdk:
+  - oraclejdk8

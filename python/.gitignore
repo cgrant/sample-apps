@@ -1,0 +1,8 @@
+.coveralls.yml
+coverage-gae.json
+*.pyc
+.coverage
+.tox
+coverage.xml
+nosetests.xml
+python-docs-samples.json
