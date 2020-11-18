@@ -8,6 +8,7 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -38,7 +39,10 @@ func main() {
 	}
 
 	log.Printf("listening on port %s", port)
-	if err := http.ListenAndServe(":"+port, router); err != nil {
+
+	if err := http.ListenAndServe(":"+port, handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}),
+		handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}),
+		handlers.AllowedOrigins([]string{"*"}))(router)); err != nil {
 		log.Fatal(err)
 	}
 }
